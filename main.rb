@@ -12,6 +12,7 @@ def command
   puts '7- Exits'
 end
 
+
 def main
   book_table = []
   person_table = []
@@ -25,18 +26,18 @@ def main
     inp = gets.chomp
 
     if inp == '1'
-      if book_table.empty?
-        puts 'No book'
-      else
+      if book_table.length != 0
         app.list_all_books(book_table)
+      else
+        puts "No book"
       end
     end
 
     if inp == '2'
-      if person_table.empty?
-        puts 'No people'
-      else
+      if person_table.length != 0
         app.list_all_people(person_table)
+      else
+        puts "No people"
       end
     end
 
@@ -100,7 +101,9 @@ def main
 
     person_table.each_with_index do |i, idx|
       stud = '[Student]'
-      stud = '[Teacher]' if defined?(i.specialization)
+      if defined?(i.specialization)
+        stud = '[Teacher]'
+      end
       puts("#{idx})  #{stud} Name: #{i.name}, ID : #{i.id} ,Age : #{i.age}")
     end
     index = gets.chomp

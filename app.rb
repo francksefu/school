@@ -15,7 +15,9 @@ class App
   def list_all_people(people)
     people.each do |i|
       stud = '[Student]'
-      stud = '[Teacher]' if defined?(i.specialization)
+      if defined?(i.specialization)
+        stud = '[Teacher]'
+      end
       puts("#{stud} Name: #{i.name}, ID : #{i.id} ,Age : #{i.age}")
     end
   end
